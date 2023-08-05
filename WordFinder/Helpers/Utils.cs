@@ -35,7 +35,7 @@
         /// </summary>
         /// <param name="inputList"></param>
         /// <returns></returns>
-        public static List<string> GetTopTenRepeatedStrings(List<string> inputList)
+        public static IEnumerable<string> GetTopTenRepeatedStrings(List<string> inputList)
         {
             var stringOccurrences = new Dictionary<string, int>();
 
@@ -57,13 +57,10 @@
             sortedOccurrences.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
 
             // Take the top ten repeated strings
-            var topTenRepeatedStrings = new List<string>();
             for (var i = 0; i < Math.Min(10, sortedOccurrences.Count); i++)
             {
-                topTenRepeatedStrings.Add(sortedOccurrences[i].Key);
+                yield return sortedOccurrences[i].Key;
             }
-
-            return topTenRepeatedStrings;
         }
     }
 }

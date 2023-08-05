@@ -30,7 +30,7 @@ namespace ConsoleBenchmarkPerformance
         {
             if (_matrixString == null) return;
             var wordFinder = new WordFinder.WordFinder(_matrixString);
-            if (_words != null) wordFinder.FindVertical(_words);
+            if (_words != null) wordFinder.Find(_words, WordFinder.WordFinder.MatrixSearchDirection.VerticalTopToBottom);
         }
 
         [Benchmark]
@@ -38,7 +38,7 @@ namespace ConsoleBenchmarkPerformance
         {
             if (_matrixString == null) return;
             var wordFinder = new WordFinder.WordFinder(_matrixString);
-            if (_words != null) wordFinder.FindHorizontal(_words);
+            if (_words != null) wordFinder.Find(_words, WordFinder.WordFinder.MatrixSearchDirection.HorizontalRightToLeft);
         }
 
         [Benchmark]
